@@ -24,9 +24,9 @@ header.sticky{position:fixed;z-index:999}
 footer{padding:50px 0}
 .copyright{padding-top:20px}
 .copyright p{margin:0;color:#74808a}
-.top{text-align:center}
-.top span{cursor:pointer;display:block;margin:15px auto 0 auto;width:35px;height:35px;border-radius:50%;border:3px solid #b9bfc4;text-align:center}
-.top i{color:#74808a}
+.top{text-align:center;color:#74808a}
+.top span{cursor:pointer;display:block;margin:0 auto;width:35px;height:35px;border-radius:50%;border:3px solid #a0cfee;text-align:center}
+.top i{animation:pulsate 1.5s ease;animation-iteration-count:infinite;padding-top:5px}
 .social{text-align:right}
 .social ul{margin:5px 0 0 0;padding:0}
 .social li{display:inline-block;font-size:1.25em;list-style:none}
@@ -60,7 +60,7 @@ footer{padding:50px 0}
 #experience-timeline{margin:30px auto 0 auto;position:relative;max-width:1000px}
 #experience-timeline:before{position:absolute;content:'';top:30px;bottom:0;left:303px;right:auto;height:100%;width:3px;background:#243355;z-index:0}
 #experience-timeline:after{position:absolute;content:'';width:3px;height:40px;background:linear-gradient(to bottom, #243355, #ffffff);top:100%;left:303px}
-.vtimeline-content{width:700px;margin-left:350px;background:#fff;border:1px solid #e6e6e6;padding:15px;border-radius:3px;text-align:left}
+.vtimeline-content{margin-left:350px;background:#fff;border:1px solid #e6e6e6;padding:15px;border-radius:3px;text-align:left}
 .vtimeline-content h3{font-size:1.5em;font-weight:300;color:#2d4b8c;display:inline-block;margin:0}
 .vtimeline-content h4{font-size:1.2em;font-weight:300;color:#7e8890;margin:0 0 15px 0}
 .vtimeline-content p{color:#74808a;font-size:0.9em;margin:0}
