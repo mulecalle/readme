@@ -5,8 +5,7 @@
   "main": "js/scripts.js",
   "scripts": {
     "watch": "gulp watch",
-    "start": "open index.html",
-    "start-win": "start index.html"
+    "start": "open index.html"
   },
   "author": "Seba Calle",
   "license": "MIT",
@@ -21,6 +20,7 @@
     "gulp-rename": "2.0.0",
     "gulp-sass": "5.1.0",
     "gulp-uglify": "3.0.2",
-    "gulp-wait": "0.0.2"
+    "gulp-wait": "0.0.2",
+    "sass": "1.86.3"
   }
 }

@@ -21,20 +21,33 @@
     ------------------------
 */
 
-// Define base and accent colors
+// Define CSS variables for modern browsers
+:root {
+    --base-color: #3498db;
+    --base-color-hover: #2980b9;
+    --background: #fff;
+    --background-alt: #f8f9fa;
+    --border: #e9ecef;
+    --heading: #343a40;
+    --text: #495057;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --transition: 0.3s ease;
+    --border-radius: 8px;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+}
+
+// Define SCSS variables for fallbacks and mixins
 $base-color: #3498db;
 $base-color-hover: darken($base-color, 10%);
-
-// Define background colors
 $background: #fff;
-$background-alt: #f2f2f5;
-
-// Define border colors
-$border: #dcd9d9;
-
-// Define text colors
-$heading: #374054;
-$text: #74808a;
+$background-alt: #f8f9fa;
+$border: #e9ecef;
+$heading: #343a40;
+$text: #495057;
 
 /*
     ---------------------
@@ -42,7 +55,7 @@ $text: #74808a;
     ---------------------
 */
 
-@mixin transition($duration: 0.5s, $func: ease, $property: all) {
+@mixin transition($duration: 0.3s, $func: ease, $property: all) {
     transition: #{$duration} #{$func} #{$property};
 }
 
@@ -66,15 +79,38 @@ $text: #74808a;
     }
 }
 
+@mixin box-shadow($shadow...) {
+    box-shadow: $shadow;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*
     ----------------------------
     ----- 3. Global Styles -----
     ----------------------------
 */
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
+    line-height: 1.6;
+    color: var(--text, $text);
+    background-color: var(--background, $background);
+    margin: 0;
+    padding: 0;
 
     &.active {
         overflow: hidden;
@@ -86,29 +122,31 @@ body {
 .no-js {
     #experience-timeline {
         > div {
-            background: $background;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid $border;
+            background: var(--background, $background);
+            padding: var(--spacing-md, 1rem);
+            margin-bottom: var(--spacing-md, 1rem);
+            border: 1px solid var(--border, $border);
+            border-radius: var(--border-radius, 8px);
+            @include box-shadow(0 2px 15px var(--shadow));
 
             h3 {
                 font-size: 1.5em;
-                font-weight: 300;
-                color: $heading;
+                font-weight: 500;
+                color: var(--heading, $heading);
                 display: inline-block;
                 margin: 0;
             }
 
             h4 {
                 font-size: 1.2em;
-                font-weight: 300;
-                color: #7e8890;
-                margin: 0 0 15px 0;
+                font-weight: 400;
+                color: var(--text, $text);
+                margin: 0 0 var(--spacing-sm, 0.5rem) 0;
             }
 
             p {
-                color: $text;
-                font-size: 0.9em;
+                color: var(--text, $text);
+                font-size: 1em;
                 margin: 0;
             }
         }
@@ -122,9 +160,11 @@ body {
 @keyframes dropHeader {
   0% {
     transform: translateY(-100%);
+    opacity: 0;
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -135,40 +175,43 @@ header {
     right: 0;
     text-align: center;
     z-index: 10;
-    animation-name: dropHeader;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    animation-duration: 0.75s;
+    animation: dropHeader 0.5s ease forwards;
 
     ul {
-        display: inline-block;
-        background: $background;
+        display: inline-flex;
+        background: var(--background, $background);
         text-align: center;
-        padding: 10px;
+        padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
         margin: 0;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: var(--border-radius, 8px);
+        border-bottom-left-radius: var(--border-radius, 8px);
+        @include box-shadow(0 2px 10px var(--shadow));
     }
 
     li {
         display: inline-block;
+        margin: 0 var(--spacing-xs, 0.25rem);
     }
 
     a {
         display: block;
-        color: $base-color;
-        padding: 10px;
+        color: var(--base-color, $base-color);
+        padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+        border-radius: var(--border-radius, 8px);
+        text-decoration: none;
+        font-weight: 500;
+        @include transition(0.2s);
 
         &:hover {
-            color: $base-color-hover;
-            text-decoration: none;
-            background: #eee;
-            border-radius: 4px;
+            color: var(--base-color-hover, $base-color-hover);
+            background-color: var(--background-alt, $background-alt);
+            transform: translateY(-2px);
         }
 
         &:focus {
-            color: $base-color;
-            text-decoration: none;
+            color: var(--base-color, $base-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba($base-color, 0.3);
         }
     }
 
@@ -179,6 +222,9 @@ header {
     &.sticky {
         position: fixed;
         z-index: 999;
+        animation: none;
+        background: var(--background, $background);
+        @include box-shadow(0 2px 10px var(--shadow));
     }
 }
 
@@ -194,28 +240,31 @@ header {
     position: fixed;
     right: 15px;
     top: 10px;
-    color: $base-color;
+    color: var(--base-color, $base-color);
     font-size: 1.5em;
     z-index: 20;
-    padding: 0 7px;
-    border-radius: 4px;
-    background: $background;
+    padding: var(--spacing-xs, 0.25rem) var(--spacing-sm, 0.5rem);
+    border-radius: var(--border-radius, 8px);
+    background: var(--background, $background);
+    @include box-shadow(0 2px 10px var(--shadow));
 }
 
 #mobile-menu-close {
     display: none;
     text-align: right;
     width: 100%;
-    background: $background;
+    background: var(--background, $background);
     font-size: 1.5em;
-    padding-right: 15px;
-    padding-top: 10px;
+    padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
     cursor: pointer;
-    color: $base-color;
+    color: var(--base-color, $base-color);
+    @include box-shadow(0 2px 5px var(--shadow));
 
     span {
         font-size: 0.5em;
         text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.5px;
     }
 
     i {
@@ -224,15 +273,17 @@ header {
 }
 
 footer {
-    padding: 50px 0;
+    padding: var(--spacing-xl, 2rem) 0;
+    background-color: var(--background-alt, $background-alt);
 }
 
 .copyright {
-    padding-top: 20px;
+    padding-top: var(--spacing-md, 1rem);
 
     p {
         margin: 0;
-        color: $text;
+        color: var(--text, $text);
+        font-size: 0.9rem;
     }
 }
 
@@ -241,17 +292,26 @@ footer {
 
     span {
         cursor: pointer;
-        display: block;
-        margin: 15px auto 0 auto;
-        width: 35px;
-        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: var(--spacing-md, 1rem) auto 0;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        border: 3px solid lighten($text, 25%);
-        text-align:center;
+        border: 2px solid var(--border, $border);
+        background-color: var(--background, $background);
+        @include transition(0.2s);
+        @include box-shadow(0 2px 10px var(--shadow));
+        
+        &:hover {
+            transform: translateY(-3px);
+            @include box-shadow(0 4px 12px var(--shadow));
+        }
     }
 
     i {
-        color: $text;
+        color: var(--text, $text);
     }
 }
 
@@ -259,8 +319,11 @@ footer {
     text-align: right;
 
     ul {
-        margin: 5px 0 0 0;
+        margin: var(--spacing-xs, 0.25rem) 0 0 0;
         padding: 0;
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--spacing-xs, 0.25rem);
     }
 
     li {
@@ -270,12 +333,20 @@ footer {
     }
 
     a {
-        display: block;
-        color: $text;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text, $text);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        @include transition(0.2s);
 
         &:hover {
-            color: $base-color;
+            color: var(--base-color, $base-color);
+            background-color: var(--background-alt, $background-alt);
+            transform: translateY(-3px);
+            @include box-shadow(0 4px 12px var(--shadow));
         }
     }
 }
@@ -283,48 +354,54 @@ footer {
 .btn-rounded-white {
     display: inline-block;
     color: #fff;
-    padding: 15px 25px;
-    border: 3px solid #fff;
+    padding: var(--spacing-sm, 0.5rem) var(--spacing-lg, 1.5rem);
+    border: 2px solid #fff;
     border-radius: 30px;
-    @include transition();
+    font-weight: 500;
+    @include transition(0.2s);
+    @include box-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
 
     &:hover {
-        color: $base-color;
+        color: var(--base-color, $base-color);
         background: #fff;
         text-decoration: none;
+        transform: translateY(-3px);
+        @include box-shadow(0 6px 15px rgba(0, 0, 0, 0.1));
     }
 }
 
 .shadow {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    @include box-shadow(0 4px 6px var(--shadow));
 }
 
 .shadow-large {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.15);
+    @include box-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
 }
 
 .heading {
     position: relative;
     display: inline-block;
-    font-size: 2em;
-    font-weight: 300;
-    margin: 0 0 30px 0;
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-lg, 1.5rem) 0;
+    color: var(--heading, $heading);
 
     &:after {
         position: absolute;
         content: '';
         top: 100%;
-        height: 1px;
+        height: 3px;
         width: 50px;
         left: 0;
         right: 0;
         margin: 0 auto;
-        background: $base-color;
+        background: var(--base-color, $base-color);
+        border-radius: 3px;
     }
 }
 
 .background-alt {
-    background: $background-alt;
+    background: var(--background-alt, $background-alt);
 }
 
 /*
@@ -340,8 +417,19 @@ footer {
     max-height: 1080px;
     background: url(../images/lead-bg.jpg);
     background-size: cover;
-    padding: 15px;
+    background-position: center;
+    padding: var(--spacing-md, 1rem);
     overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
 }
 
 #lead-content {
@@ -351,25 +439,28 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-
+    
     h1, h2 {
         margin: 0;
     }
-
+    
     h1 {
         color: #fff;
-        font-weight: 900;
-        font-size: 5em;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        line-height: 0.9em;
+        font-weight: 700;
+        font-size: 3.5rem;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
-
+    
     h2 {
-        color: lighten($base-color, 25%);
+        color: rgba(255, 255, 255, 0.9);
         font-weight: 500;
-        font-size: 2.25em;
-        margin-bottom: 15px;
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-lg, 1.5rem);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-rounded-white {
+        margin-top: var(--spacing-md, 1rem);
     }
 }
 
