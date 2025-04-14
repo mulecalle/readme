@@ -24,9 +24,3 @@ This project provides a clean, responsive template for creating personal or prof
    ```
    npm install
    ```
-
-## Usage
-
-### Development
-
-To start development with live reloading:
