@@ -1,7 +1,7 @@
 {
   "name": "about-template",
   "version": "1.2.2",
-  "description": "",
+  "description": "A modern, responsive personal portfolio website template for showcasing professional experience and projects.",
   "main": "js/scripts.js",
   "scripts": {
     "watch": "gulp watch",
