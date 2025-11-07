@@ -1,3 +1,3 @@
-# readme
+# Readme
 
-Source code for [Seba's Calle](mulecalle.github.io/readme) home page.
+Source code for [Seba Calle](mulecalle.github.io/readme) home page.
