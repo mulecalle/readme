@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "gulp watch",
     "start": "open index.html",
-    "generate": "md-to-pdf ./resume/resume.md "
+    "generate": "md-to-pdf resume/sebastian-calle.md --document-title \"Sebastian Calle\""
   },
   "author": "Seba Calle",
   "license": "MIT",

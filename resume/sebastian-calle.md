@@ -1,6 +1,5 @@
 # Sebastian Calle
 
-#### Principal Software Engineer
 
 [<img alt="icon" height="20" src="./assets/linkedin.png" width="20"/>](https://linkedin.com/in/scalle) &nbsp;
 [<img alt="icon" height="20" src="./assets/gmail.png" width="20"/>](mailto:sebacalle@gmail.com) &nbsp;
