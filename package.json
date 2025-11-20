@@ -5,7 +5,8 @@
   "main": "js/scripts.js",
   "scripts": {
     "watch": "gulp watch",
-    "start": "open index.html"
+    "start": "open index.html",
+    "generate": "md-to-pdf ./resume/resume.md "
   },
   "author": "Seba Calle",
   "license": "MIT",
@@ -13,7 +14,7 @@
     "@babel/core": "7.22.5",
     "@babel/preset-env": "7.22.5",
     "browser-sync": "2.29.3",
-    "gulp": "4.0.2",
+    "gulp": "5.0.1",
     "gulp-autoprefixer": "8.0.0",
     "gulp-babel": "8.0.0",
     "gulp-plumber": "1.2.1",
@@ -21,10 +22,11 @@
     "gulp-sass": "5.1.0",
     "gulp-uglify": "3.0.2",
     "gulp-wait": "0.0.2",
-    "sass": "1.86.3"
+    "sass": "1.94.2",
+    "md-to-pdf": "5.2.5"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": "18.11.0",
+    "npm": "8.19.2"
   }
 }
