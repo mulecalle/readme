@@ -8,11 +8,10 @@
         5. About Styles
         6. Experience Styles
         7. Education Styles
-        8. Project Styles
-        9. Tech Stack Styles
-        10. Contact Styles
-        11. Optional Section Styles
-        12. Media Queries
+        8. Tech Stack Styles
+        9. Contact Styles
+        10. Optional Section Styles
+        11. Media Queries
 */
 
 /*
@@ -41,7 +40,7 @@
 }
 
 // Define SCSS variables for fallbacks and mixins
-$base-color: #3498db;
+$base-color: #5b89a8cc;
 $base-color-hover: darken($base-color, 10%);
 $background: #fff;
 $background-alt: #f8f9fa;
@@ -688,6 +687,7 @@ footer {
     padding: 15px;
     border: 1px solid $border;
     text-align: left;
+    background: #f8f9fa;
 
     h3 {
         font-weight: 500;
@@ -721,71 +721,7 @@ footer {
 
 /*
     -------------------------------
-    ----- 8. Project Styles -----
-    -------------------------------
-*/
-
-#projects {
-    padding: 50px 15px;
-    border-bottom: 1px solid $border;
-    text-align: center;
-
-    h2 {
-        color: $heading;
-        margin-bottom: 50px;
-    }
-}
-
-.project {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto 30px auto;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 4px;
-}
-
-.project-image {
-    float: left;
-}
-
-.project-info {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 300px;
-    padding: 15px;
-
-    h3 {
-        font-size: 1.5em;
-        font-weight: 300;
-        color: $heading;
-        margin: 0 0 15px 0;
-    }
-
-    p {
-        color: $text;
-        margin: 0 0 15px 0;
-        font-size: 0.9em;
-    }
-}
-
-.no-image {
-    .project-info {
-        position: relative;
-        margin: 0;
-        padding: 30px 15px;
-        transform: none;
-    }
-}
-
-#more-projects {
-    display: none;
-}
-
-/*
-    -------------------------------
-    ----- 9. Tech Stack Styles -----
+    ----- 8. Tech Stack Styles -----
     -------------------------------
 */
 
@@ -810,22 +746,23 @@ footer {
         margin: 7px;
         padding: 5px 10px;
         color: $heading;
-        background: darken($background-alt, 5%);
+        background: #fff;
         list-style: none;
         cursor: default;
         font-size: 1.2em;
+        border-bottom: 1px solid $border;
     }
 }
 
 /*
     -------------------------------
-    ----- 10. Contact Styles -----
+    ----- 9. Contact Styles -----
     -------------------------------
 */
 
 #contact {
     padding: 50px 15px;
-    background: $base-color;
+    background: #5b89a8cc;
     text-align: center;
 
     h2 {
