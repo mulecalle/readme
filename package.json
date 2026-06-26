@@ -1,32 +1,44 @@
 {
-  "name": "about-template",
-  "version": "1.2.2",
-  "description": "A modern, responsive personal portfolio website template for showcasing professional experience and projects.",
-  "main": "js/scripts.js",
+  "name": "sebacalle-portfolio",
+  "version": "2.0.0",
+  "description": "Sebastian Calle's personal portfolio site.",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "watch": "gulp watch",
-    "start": "open index.html",
+    "dev": "vite --host 0.0.0.0",
+    "start": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
     "generate": "md-to-pdf resume/sebastian-calle.md --document-title \"Sebastian Calle\""
   },
   "author": "Seba Calle",
   "license": "MIT",
+  "dependencies": {
+    "@gsap/react": "latest",
+    "@radix-ui/react-slot": "latest",
+    "@tailwindcss/vite": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "gsap": "latest",
+    "lenis": "latest",
+    "lucide-react": "latest",
+    "motion": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwind-merge": "latest",
+    "tailwindcss": "latest"
+  },
   "devDependencies": {
-    "@babel/core": "7.22.5",
-    "@babel/preset-env": "7.22.5",
-    "browser-sync": "2.29.3",
-    "gulp": "5.0.1",
-    "gulp-autoprefixer": "8.0.0",
-    "gulp-babel": "8.0.0",
-    "gulp-plumber": "1.2.1",
-    "gulp-rename": "2.0.0",
-    "gulp-sass": "5.1.0",
-    "gulp-uglify": "3.0.2",
-    "gulp-wait": "0.0.2",
-    "sass": "1.94.2",
-    "md-to-pdf": "5.2.5"
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "md-to-pdf": "latest",
+    "typescript": "latest",
+    "vite": "latest"
   },
   "engines": {
-    "node": "18.11.0",
-    "npm": "8.19.2"
+    "node": ">=20.19.0",
+    "npm": ">=10.8.0"
   }
 }
